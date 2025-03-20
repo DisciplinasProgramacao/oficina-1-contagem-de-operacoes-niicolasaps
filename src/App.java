@@ -1,4 +1,6 @@
 import java.util.Random;
+import sorts.BubbleSort;
+import sorts.InsertionSort;
 
 public class App {
     static int[] tamanhosTesteGrande =  { 125_000, 250_000, 500_000, 1_000_000, 2_000_000 };
@@ -107,6 +109,24 @@ public class App {
             fim = System.nanoTime();
             System.out.println("codigo4 - " + tamanho + " - " + operacoes + " - " + (fim - inicio));
         }
+
+        BubbleSort<Integer> bubbleSort = new BubbleSort<>();
+        InsertionSort<Integer> insertionSort = new InsertionSort<>();
+
+        for (int tamanho : tamanhosTesteMedio) {
+            Integer[] vetor = new Integer[tamanho];
+            for (int i = 0; i < tamanho; i++) {
+                vetor[i] = aleatorio.nextInt(1, tamanho / 2);
+            }
+
+            bubbleSort.sort(vetor);
+            System.out.println("BubbleSort - " + tamanho + " - Comparisons: " + bubbleSort.getComparisons() + " - Swaps: " + bubbleSort.getSwaps() + " - Time: " + bubbleSort.getTime());
+
+            insertionSort.sort(vetor);
+            System.out.println("InsertionSort - " + tamanho + " - Comparisons: " + insertionSort.getComparisons() + " - Swaps: " + insertionSort.getSwaps() + " - Time: " + insertionSort.getTime());
+        }
     }
-    
-}
+
+
+    }
+  
